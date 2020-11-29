@@ -1,6 +1,6 @@
 import express from 'express';
 
-import IController from '../interfaces/IController';
+import { IController } from '../../ts/types';
 
 export default class InfoController implements IController {
   public path = '/';

@@ -2,7 +2,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
 
-import IController from './interfaces/IController';
+import { IController } from '../ts/types';
 
 export default class App {
   private app: express.Application;

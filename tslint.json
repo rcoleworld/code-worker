@@ -5,8 +5,9 @@
   "rules": {
     "no-console": false,
     "trailing-comma": [false],
-    "no-any": true,
-    "typedef": true
+    "typedef": true,
+    "max-line-length": [false],
+    "quotemark": [true, "single"]
   },
   "rulesDirectory": []
 }
