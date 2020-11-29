@@ -1,7 +1,7 @@
 import http from 'http';
 import { v4 as uuidv4 } from 'uuid';
 
-import { generateBuildDirectory, generateDockerFile, generateSrcFile, removeBuildDirectory } from '../tools/buildUtils';
+import { generateBuildDirectory, generateSrcFile, removeBuildDirectory } from '../tools/buildUtils';
 import { ContainerStatusCode } from '../ts/types';
 
 export default abstract class CodeContainer {
@@ -154,12 +154,11 @@ export default abstract class CodeContainer {
     console.log('Pulling image...');
     await this.dockerEngineRequest(requestOptions);
   }
-  
+
   // Creates environment on file system for container to be run off of.
   protected createEnvironment(): void {
     generateBuildDirectory(this.uuid, this.codeType);
     generateSrcFile(this.uuid, this.codeType, this.code);
-    generateDockerFile(this.uuid, this.codeType);
   }
 
   protected cleanEnvironment(): void {
