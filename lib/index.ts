@@ -15,15 +15,12 @@
 
 import CodeContainerFactory from './codeexecution/CodeContainerFactory';
 const containerFactory = new CodeContainerFactory();
-const code = 'for i in range(100):\n\tprint(i, end=" ")';
+const code = 'print("hello")';
 const pythonContainer = containerFactory.getCodeContainer('python', code);
 
 async function init() {
   await pythonContainer.initialize();
-  console.log(pythonContainer.getOutput().toString());
-  console.log(pythonContainer.getStatus());
-  console.log(pythonContainer.getUuid());
-  console.log(pythonContainer.getContainerId());
+  console.log(pythonContainer.getOutput());
 }
 
 init();

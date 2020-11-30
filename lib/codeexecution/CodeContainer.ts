@@ -31,8 +31,8 @@ export default abstract class CodeContainer {
     return this.status;
   }
 
-  public getOutput(): Buffer {
-    return this.output;
+  public getOutput(): string {
+    return this.output.toString();
   }
 
   public getContainerId(): string {
