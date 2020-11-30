@@ -28,6 +28,7 @@ export default class PythonCodeContainer extends CodeContainer {
       Cmd: [`${this.uuid}.py`],
       EntryPoint: ['python3'],
       Image: this.image,
+      NetworkDisabled: true,
       WorkingDir: `/usr/src/app/python/${this.uuid}`,
     });
 
