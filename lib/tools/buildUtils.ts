@@ -17,18 +17,21 @@ export function generateBuildDirectory(uuid: string, codeType: string): void {
     case 'python':
       dir = directoryStruct.python;
       if (!fs.existsSync(path.join(process.cwd(), dir))) {
-        console.log('Hello');
         fs.mkdirSync(path.join(process.cwd(), dir), { recursive: true });
       }
       break;
-
+    case 'golang':
+      dir = directoryStruct.golang;
+      if (!fs.existsSync(path.join(process.cwd(), dir))) {
+        fs.mkdirSync(path.join(process.cwd(), dir), { recursive: true });
+      }
+      break;
     default:
       throw new Error('Invalid code type specified...');
   }
 
   dir = `${dir}/${uuid}`;
 
-  console.log(dir);
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(path.join(process.cwd(), dir), { recursive: true });
   }
@@ -48,6 +51,9 @@ export function generateSrcFile(uuid: string, codeType: string, code: string): v
     case 'python':
       dir = `${directoryStruct.python}/${uuid}/${uuid}.py`;
       break;
+    case 'golang':
+      dir = `${directoryStruct.golang}/${uuid}/${uuid}.go`;
+      break;
     default:
       throw new Error('Invalid code type specified...');
   }
@@ -66,35 +72,35 @@ export function generateSrcFile(uuid: string, codeType: string, code: string): v
   }
 }
 
-/**
- * Generates a dockerfile for
- * @param uuid The UUID of the running code container.
- * @param codeType The language of the code container.
- */
-export function generateDockerFile(uuid: string, codeType: string): void {
-  const dockerFileContents = getDockerFileContents(uuid, codeType);
-  let dir: string;
-  switch (codeType) {
-    case 'python':
-      dir = `${directoryStruct.python}/${uuid}/Dockerfile`;
-      break;
-    default:
-      throw new Error('Invalid code type specified...');
-  }
+// /**
+//  * Generates a dockerfile for
+//  * @param uuid The UUID of the running code container.
+//  * @param codeType The language of the code container.
+//  */
+// export function generateDockerFile(uuid: string, codeType: string): void {
+//   const dockerFileContents = getDockerFileContents(uuid, codeType);
+//   let dir: string;
+//   switch (codeType) {
+//     case 'python':
+//       dir = `${directoryStruct.python}/${uuid}/Dockerfile`;
+//       break;
+//     default:
+//       throw new Error('Invalid code type specified...');
+//   }
 
-  const filePath = path.join(process.cwd(), dir);
+//   const filePath = path.join(process.cwd(), dir);
 
-  try {
-    fs.writeFile(filePath, dockerFileContents, (error) => {
-      if (error) {
-        throw error;
-      }
-      console.log('Dockerfile Generated...');
-    });
-  } catch (error) {
-    console.error(error);
-  }
-}
+//   try {
+//     fs.writeFile(filePath, dockerFileContents, (error) => {
+//       if (error) {
+//         throw error;
+//       }
+//       console.log('Dockerfile Generated...');
+//     });
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
 
 /**
  * Removes a directory that is unused based on the specific codeType and uuid targeted.
@@ -107,7 +113,9 @@ export function removeBuildDirectory(uuid: string, codeType: string) {
     case 'python':
       dir = `${directoryStruct.python}/${uuid}`;
       break;
-
+    case 'golang':
+      dir = `${directoryStruct.golang}/${uuid}`;
+      break;
     default:
       throw new Error('Invalid code type specified...');
   }
@@ -119,11 +127,11 @@ export function removeBuildDirectory(uuid: string, codeType: string) {
   }
 }
 
-function getDockerFileContents(uuid: string, codeType: string): string {
-  switch (codeType) {
-    case 'python':
-      return `FROM python:3.7\nWORKDIR /usr/src/app/python/${uuid}\nCOPY . .\nCMD ["${uuid}.py"]\nENTRYPOINT ["python3"]`;
-    default:
-      throw new Error('Invalid code type specified...');
-  }
-}
+// function getDockerFileContents(uuid: string, codeType: string): string {
+//   switch (codeType) {
+//     case 'python':
+//       return `FROM python:3.7\nWORKDIR /usr/src/app/python/${uuid}\nCOPY . .\nCMD ["${uuid}.py"]\nENTRYPOINT ["python3"]`;
+//     default:
+//       throw new Error('Invalid code type specified...');
+//   }
+// }

@@ -1,3 +1,4 @@
 export const directoryStruct = {
-  python: './engine/python',
+  golang: './engine/golang',
+  python: './engine/python'
 };

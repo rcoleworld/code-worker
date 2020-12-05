@@ -15,12 +15,12 @@
 
 import CodeContainerFactory from './codeexecution/CodeContainerFactory';
 const containerFactory = new CodeContainerFactory();
-const code = 'print("hello")';
-const pythonContainer = containerFactory.getCodeContainer('python', code);
+const code = 'package main\n\nimport "fmt"\nfunc main() {\n\tfmt.Println("Hello")\n}';
+const goContainer = containerFactory.getCodeContainer('golang', code);
 
 async function init() {
-  await pythonContainer.initialize();
-  console.log(pythonContainer.getOutput());
+  await goContainer.initialize();
+  console.log(goContainer.getOutput());
 }
 
 init();
