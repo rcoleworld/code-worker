@@ -3,7 +3,7 @@ import path from 'path';
 import CodeContainer from './CodeContainer';
 
 export default class PythonCodeContainer extends CodeContainer {
-  public code;
+  public code: string;
 
   constructor(code: string) {
     super(code);
