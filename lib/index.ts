@@ -1,26 +1,16 @@
-// import dotenv from 'dotenv';
-// import App from './server/app';
+import dotenv from 'dotenv';
+import App from './server/app';
 
-// import InfoController from './server/controllers/InfoController';
+import CodeController from './server/controllers/CodeController';
 
-// dotenv.config();
+dotenv.config();
 
-// const PORT: number = Number(process.env.PORT) || 5000;
-// const HOST: string = process.env.HOST || '127.0.0.1';
-// const info = new InfoController();
-// const controllers = [info];
+const PORT: number = Number(process.env.PORT) || 5000;
+const HOST: string = process.env.HOST || '127.0.0.1';
 
-// const app = new App(controllers, PORT, HOST);
-// app.listen();
+const code = new CodeController();
 
-import CodeContainerFactory from './codeexecution/CodeContainerFactory';
-const containerFactory = new CodeContainerFactory();
-const code = 'package main\n\nimport "fmt"\nfunc main() {\n\tfmt.Println("Hello")\n}';
-const goContainer = containerFactory.getCodeContainer('golang', code);
+const controllers = [code];
 
-async function init() {
-  await goContainer.initialize();
-  console.log(goContainer.getOutput());
-}
-
-init();
+const app = new App(controllers, PORT, HOST);
+app.listen();
