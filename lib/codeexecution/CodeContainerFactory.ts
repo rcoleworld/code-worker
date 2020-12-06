@@ -3,7 +3,7 @@ import GolangCodeContainer from './GolangCodeContainer';
 import PythonCodeContainer from './PythonCodeContainer';
 
 export default class CodeContainerFactory {
-  public getCodeContainer(type: string, code: string): CodeContainer {
+  public static getCodeContainer(type: string, code: string): CodeContainer {
     switch (type) {
       case 'python':
         return new PythonCodeContainer(code);
