@@ -41,7 +41,7 @@ export default class GolangCodeContainer extends CodeContainer {
       socketPath: '/var/run/docker.sock',
     };
 
-    console.log('Creating Container...');
+    console.log(`Creating Container... ID: ${this.uuid}`);
 
     const containerResponseInfo = JSON.parse(await (await this.dockerEngineRequest(requestOptions, containerData)).toString());
 

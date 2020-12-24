@@ -72,36 +72,6 @@ export function generateSrcFile(uuid: string, codeType: string, code: string): v
   }
 }
 
-// /**
-//  * Generates a dockerfile for
-//  * @param uuid The UUID of the running code container.
-//  * @param codeType The language of the code container.
-//  */
-// export function generateDockerFile(uuid: string, codeType: string): void {
-//   const dockerFileContents = getDockerFileContents(uuid, codeType);
-//   let dir: string;
-//   switch (codeType) {
-//     case 'python':
-//       dir = `${directoryStruct.python}/${uuid}/Dockerfile`;
-//       break;
-//     default:
-//       throw new Error('Invalid code type specified...');
-//   }
-
-//   const filePath = path.join(process.cwd(), dir);
-
-//   try {
-//     fs.writeFile(filePath, dockerFileContents, (error) => {
-//       if (error) {
-//         throw error;
-//       }
-//       console.log('Dockerfile Generated...');
-//     });
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-
 /**
  * Removes a directory that is unused based on the specific codeType and uuid targeted.
  * @param uuid The UUID of the running code container.
@@ -126,12 +96,3 @@ export function removeBuildDirectory(uuid: string, codeType: string) {
     console.error(error);
   }
 }
-
-// function getDockerFileContents(uuid: string, codeType: string): string {
-//   switch (codeType) {
-//     case 'python':
-//       return `FROM python:3.7\nWORKDIR /usr/src/app/python/${uuid}\nCOPY . .\nCMD ["${uuid}.py"]\nENTRYPOINT ["python3"]`;
-//     default:
-//       throw new Error('Invalid code type specified...');
-//   }
-// }
