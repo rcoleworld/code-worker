@@ -19,7 +19,7 @@ To run:
 npm start
 ```
 
-Example Request:
+Example Requests:
 ```
 POST /code?lang=python
 BODY: {
@@ -32,3 +32,7 @@ BODY: {
 }
 
 ```
+
+Supported languages:
+- Python
+- Go
