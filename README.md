@@ -36,3 +36,11 @@ BODY: {
 Supported languages:
 - Python
 - Go
+
+Goals:
+- Clean output
+- Enable ability to show errors when code is ran
+- Rate limiting
+- API key generation
+- Website
+- Discord bot incorporation
