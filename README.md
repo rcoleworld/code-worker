@@ -44,3 +44,5 @@ Goals:
 - API key generation
 - Website
 - Discord bot incorporation
+- Add more languages
+- Add support for test cases
