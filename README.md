@@ -1,5 +1,3 @@
-# Code Worker
-
 ## An engine for executing code via HTTP requests.
 
 Installing:
@@ -39,6 +37,7 @@ Supported languages:
 
 Goals:
 - Clean output
+- Setup unit tests with jest
 - Enable ability to show errors when code is ran
 - Rate limiting
 - API key generation
