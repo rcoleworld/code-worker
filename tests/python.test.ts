@@ -8,4 +8,4 @@ test('Python output simple', async () => {
   const codeOutput = pythonContainer.getOutput().trim().replace(/[^A-Za-z 0-9 \.,\?""!@#\$%\^&\*\(\)-_=\+;:<>\/\\\|\}\{\[\]`~\n]*/g, '');
 
   expect(codeOutput).toBe('Hello World');
-})
+});
