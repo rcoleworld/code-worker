@@ -22,7 +22,7 @@ export default class CodeController implements IController {
       const codeContainer = CodeContainerFactory.getCodeContainer(language.toString(), code);
 
       await codeContainer.initialize();
-      const output = codeContainer.getOutput().replace(/[^a-Za-z 0-9 \.,\?""!@#\$%\^&\*\(\)-_=\+;:<>\/\\\|\}\{\[\]`~\n]*/g, ''); // removes unicode characters
+      const output = codeContainer.getOutput();
       response.json({output});
     } catch (error) {
       response.sendStatus(500);

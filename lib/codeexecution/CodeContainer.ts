@@ -21,7 +21,7 @@ export default abstract class CodeContainer {
     this.code = code;
   }
 
-  public abstract async initialize(): Promise<void>;
+  public abstract initialize(): Promise<void>;
 
   public getUuid(): string {
     return this.uuid;
@@ -39,7 +39,7 @@ export default abstract class CodeContainer {
     return this.containerId;
   }
 
-  protected abstract async createContainer(): Promise<void>;
+  protected abstract createContainer(): Promise<void>;
 
   protected async startContainer(): Promise<void> {
     await this.createContainer();
